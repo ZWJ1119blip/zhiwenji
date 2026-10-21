@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+/* ============================================================
+   织纹集 · 传统色板与字体主题
+   米白 / 黛绿 / 朱砂 / 藤黄 / 赭石 / 天青 / 黛蓝 / 霁青 / 宝蓝
+   ============================================================ */
+@theme static {
+  --color-rice: #f6f1e6; /* 米白 · 宣纸底色 */
+  --color-rice-deep: #ede5d3; /* 米白加深 · 纹样底 */
+  --color-rice-card: #fdfbf4; /* 卡片底 */
+  --color-line: #ddd3bd; /* 分隔线 */
+  --color-dai: #2c4a3e; /* 黛绿 */
+  --color-dai-light: #4e7060;
+  --color-zhusha: #b23a2e; /* 朱砂红 */
+  --color-zhusha-deep: #8e2a20;
+  --color-mo: #2a2620; /* 墨色 */
+  --color-mo-light: #6f6656;
+  --color-zheshi: #8c5a3c; /* 赭石 */
+  --color-teng: #d9a441; /* 藤黄 */
+  --color-tianqing: #7fa3b5; /* 天青 */
+  --color-dailan: #2c4a5e; /* 黛蓝 */
+  --color-jiqing: #6b8ca8; /* 霁青 */
+  --color-baolan: #2b4c7e; /* 宝蓝 */
+
+  --font-sans: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC",
+    sans-serif;
+  --font-serif: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    /* 宣纸底纹：极淡的圆点肌理 */
+    background-color: var(--color-rice);
+    background-image: radial-gradient(rgba(42, 38, 32, 0.05) 1px, transparent 1px);
+    background-size: 24px 24px;
+    color: var(--color-mo);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-zhusha);
+    color: var(--color-rice);
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--color-dai);
+    outline-offset: 2px;
+  }
+}
+
+/* ============================================================
+   非遗规制智能诊断 · 扫描线动画
+   ============================================================ */
+@keyframes rule-scan {
+  0% {
+    top: -28%;
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+.rule-scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 28%;
+  background: linear-gradient(
+    180deg,
+    rgba(178, 58, 46, 0) 0%,
+    rgba(178, 58, 46, 0.1) 38%,
+    rgba(178, 58, 46, 0.34) 50%,
+    rgba(178, 58, 46, 0.1) 62%,
+    rgba(178, 58, 46, 0) 100%
+  );
+  animation: rule-scan 1.5s linear infinite;
+}
+
+/* 诊断网格淡入 */
+@keyframes rule-grid-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.rule-grid-in {
+  animation: rule-grid-in 0.35s ease-out both;
+}
